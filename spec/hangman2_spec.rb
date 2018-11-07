@@ -23,6 +23,13 @@ RSpec.describe Word do
 
     word.add_guess('h')
     expect(word.guessed_letters).to eq (['h','_','_','_','_'])
+  end
 
+  it 'adds a 2nd letter to the current word' do
+    word = Word.new('hello')
+
+    word.add_guess('h')
+    word.add_guess('l')
+    expect(word.guessed_letters).to eq (['h','_','l','l','_'])
   end
 end
