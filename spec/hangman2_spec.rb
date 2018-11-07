@@ -32,4 +32,11 @@ RSpec.describe Word do
     word.add_guess('l')
     expect(word.guessed_letters).to eq (['h','_','l','l','_'])
   end
+
+  it 'adds a letter which is not matching with the current word' do
+    word = Word.new('hello')
+
+    word.add_guess('w')
+    expect(word.guessed_letters).to eq (['_','_','_','_','_'])
+  end
 end

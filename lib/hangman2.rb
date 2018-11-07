@@ -13,8 +13,9 @@ class Word
     @word.split('').each do |letter|
       if @user_guesses.include?(letter)
         letters.push(letter)
-      else
-        letters.push('_') 
+        #creating a new function here?
+      else @user_guesses != @word
+            letters.push('_')
       end
     end
     letters
