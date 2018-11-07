@@ -39,4 +39,13 @@ RSpec.describe Word do
     word.add_guess('w')
     expect(word.guessed_letters).to eq (['_','_','_','_','_'])
   end
+
+  it 'a wrong guess and I have to take a life from the user' do
+    word = Word.new('hello')
+    life = Life.new(6)
+
+    word.add_guess('w')
+    Life.amount_of_lives(-1)
+    expect(word.guessed_letters).to eq (['_','_','_','_','_'])
+  end
 end
