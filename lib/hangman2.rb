@@ -6,6 +6,7 @@ class Word
     @lives = 6
   end
 
+
   def amount_of_lives
     @lives
   end
@@ -34,7 +35,6 @@ class Word
   #   @word.split('').each do |letter|
   #   end
   ### MAIN INSTANCE FINISHING HERE = commun
-
   def right_guess
       letters = []
       @word_as_letter.each do |letter|
