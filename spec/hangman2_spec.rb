@@ -65,12 +65,15 @@ RSpec.describe Word do
     expect(word.wrong_guess).to eq("game over")
   end
 
-  it 'a wrong guess and I have to take a life from the user' do
+  it 'finally the right guess for the whole word. So now, we have to tell him bravo you won' do
     word = Word.new('hello')
-    life = Life.new(6) 
 
-    word.add_guess('w')
-    Life.amount_of_lives(-1)
-    expect(word.guessed_letters).to eq (['_','_','_','_','_'])
+    word.add_guess('h')
+    word.add_guess('e')
+    word.add_guess('l')
+    word.add_guess('l')
+    word.add_guess('o')
+
+    expect(word.right_guess).to eq("bravo! you won")
   end
 end

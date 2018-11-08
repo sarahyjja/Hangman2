@@ -41,11 +41,16 @@ class Word
     if @user_guesses.include?(letter)
       letters.push(letter)
       #creating a new function here?
-    else
+    elsif
       letters.push('_')
+    elsif
+      @lives >= 1
+      letters == @word_as_letter
+      @word_as_letter.join
+      p "bravo! you won"
     end
   end
-  puts " you right give me another letter"
+  puts "you right give me another letter"
   letters
   end
 
