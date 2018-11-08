@@ -42,7 +42,7 @@ RSpec.describe Word do
 
   it 'a wrong guess and I have to take a life from the user' do
     word = Word.new('hello')
-    life = Life.new(6)
+    life = Life.new(6) 
 
     word.add_guess('w')
     Life.amount_of_lives(-1)
