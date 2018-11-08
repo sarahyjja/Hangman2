@@ -46,14 +46,14 @@ RSpec.describe Word do
     expect(word.amount_of_lives).to eq(6)
   end
 
-  it 'when the user make a wrong guess, it take 1 life away' do
+  it 'TESTING COUNTER OF AMOUNT OF LIFE : when the user make a wrong guess, it take 1 life away' do
     word = Word.new('hello')
 
     word.add_guess('j')
     expect(word.amount_of_lives).to eq(5)
   end
 
-  it 'when the user has no life anymore in his bucket, we have to tell him game over' do
+  it 'TESTING WHOLE PATH OF WRONG ANSWER : when the user has no life anymore in his bucket, we have to tell him game over' do
     word = Word.new('hello')
 
     word.add_guess('j')
@@ -62,10 +62,10 @@ RSpec.describe Word do
     word.add_guess('s')
     word.add_guess('a')
     word.add_guess('b')
-    expect(word.wrong_guess).to eq("game over")
+    expect(word.wrong_guess).to eq("GAME OVER")
   end
 
-  it 'finally the right guess for the whole word. So now, we have to tell him bravo you won' do
+  it 'TESTING WHOLE PATH OF RIGHT ANSWER :finally the right guess for the whole word. So now, we have to tell him great you won' do
     word = Word.new('hello')
 
     word.add_guess('h')
@@ -74,6 +74,6 @@ RSpec.describe Word do
     word.add_guess('l')
     word.add_guess('o')
 
-    expect(word.right_guess).to eq("bravo! you won")
+    expect(word.right_guess).to eq("great! you won")
   end
 end
