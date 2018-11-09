@@ -10,6 +10,17 @@ class Word
     @amount_of_lives
   end
 
+  def hidden_word
+    @word_as_letter.map { |letter| "_" }.join(" ")
+  end
+
+  def exist_in_word?(letter)
+    @word_as_letter.include?(letter)
+  end
+
+  def get_index_letter(letter)
+    @word.index(letter)
+  end
 
   def add_guess(letter)
     @user_guesses.push(letter)
@@ -22,20 +33,16 @@ class Word
     end
   end
 
-  def right_guess()
-    letters = []
+  def right_guess
+    right_letters = []
     @word_as_letter.each do |letter|
-      letters.push(letter)
-      if letter == @word_as_letter
-        #letters.push(' _ ')
-        puts letters.push(' _')
-        # "#{letter.join(" _")}"
-        # while @word_as_letter != @word do
-        puts "You are right! Give me another letter"
-        #puts letters.join
+      if letter == @word_as_letter # if 'h' == ['h', 'e', 'l', 'l', 'o']
+         letter.push(' _ ')
 
-        else
-          letters.join == @word
+        puts "You are right! Give me another letter"
+
+      elsif right_letters[] == @word_as_letter
+          letter.join == @word
           puts "great! you won"
         end
       end
