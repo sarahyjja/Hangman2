@@ -2,58 +2,61 @@ require 'hangman2'
 
 RSpec.describe Word do
 
-  it 'returns the guessed letters' do
-    word = Word.new('hello')
+  # it '1 - returns the guessed letters' do
+  #   word = Word.new('hello')
+  #
+  #   right_guess = word.right_guess
+  #
+  #   expect(right_guess).to eq(['_','_','_','_','_',])
+  # end
+  #
+  # it '2 - returns empty letter for different length of word' do
+  #   word = Word.new('blackberry')
+  #
+  #   right_guess = word.right_guess
+  #
+  #   expect(right_guess).to eq(['_','_','_','_','_','_','_','_','_','_'])
+  # end
 
-    right_guess = word.right_guess
-
-    expect(right_guess).to eq(['_','_','_','_','_',])
-  end
-
-  it 'returns empty letter for different length of word' do
-    word = Word.new('blackberry')
-
-    right_guess = word.right_guess
-
-    expect(right_guess).to eq(['_','_','_','_','_','_','_','_','_','_'])
-  end
-
-  it 'adds a letter to the current word' do
+  it '3 - adds a letter to the current word' do
     word = Word.new('hello')
 
     word.add_guess('h')
     expect(word.right_guess).to eq (['h','_','_','_','_'])
+    expect(word.right_guess).to eq ("You are right! Give me another letter")
   end
 
-  it 'adds a 2nd letter to the current word' do
+  it '4 - adds a 2nd letter to the current word' do
     word = Word.new('hello')
 
     word.add_guess('h')
     word.add_guess('l')
     expect(word.right_guess).to eq (['h','_','l','l','_'])
+    expect(word.right_guess).to eq ("You are right! Give me another letter")
+
   end
 
-  it 'adds a letter which is not matching with the current word' do
+  it '5 - adds a letter which is not matching with the current word' do
     word = Word.new('hello')
 
     word.add_guess('w')
     expect(word.right_guess).to eq (['_','_','_','_','_'])
   end
 
-  it 'starts a word with 6 lives' do
+  it '6 - starts a word with 6 lives' do
     word = Word.new('hello')
 
-    expect(word.amount_of_lives).to eq(6)
+    expect(word.life_counter).to eq(6)
   end
 
-  it 'TESTING COUNTER OF AMOUNT OF LIFE : when the user make a wrong guess, it take 1 life away' do
+  it '7 - TESTING COUNTER OF AMOUNT OF LIFE : when the user make a wrong guess, it take 1 life away' do
     word = Word.new('hello')
 
     word.add_guess('j')
-    expect(word.amount_of_lives).to eq(5)
+    expect(word.life_counter).to eq(5)
   end
 
-  it 'TESTING WHOLE PATH OF WRONG ANSWER : when the user has no life anymore in his bucket, we have to tell him game over' do
+  it '8 - TESTING WHOLE PATH OF WRONG ANSWER : when the user has no life anymore in his bucket, we have to tell him game over' do
     word = Word.new('hello')
 
     word.add_guess('j')
@@ -65,14 +68,13 @@ RSpec.describe Word do
     expect(word.wrong_guess).to eq("GAME OVER")
   end
 
-  it 'TESTING WHOLE PATH OF RIGHT ANSWER :finally the right guess for the whole word. So now, we have to tell him great you won' do
+  it '9 - TESTING WHOLE PATH OF RIGHT ANSWER :finally the right guess for the whole word. So now, we have to tell him great you won' do
     word = Word.new('hello')
 
+    word.add_guess('o')
+    word.add_guess('l')
     word.add_guess('h')
     word.add_guess('e')
-    word.add_guess('l')
-    word.add_guess('l')
-    word.add_guess('o')
 
     expect(word.right_guess).to eq("great! you won")
   end
