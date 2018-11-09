@@ -1,23 +1,6 @@
 require 'hangman2'
 
 RSpec.describe Word do
-
-  # it '1 - returns the guessed letters' do
-  #   word = Word.new('hello')
-  #
-  #   right_guess = word.right_guess
-  #
-  #   expect(right_guess).to eq(['_','_','_','_','_',])
-  # end
-  #
-  # it '2 - returns empty letter for different length of word' do
-  #   word = Word.new('blackberry')
-  #
-  #   right_guess = word.right_guess
-  #
-  #   expect(right_guess).to eq(['_','_','_','_','_','_','_','_','_','_'])
-  # end
-
   it '3 - adds a letter to the current word' do
     word = Word.new('hello')
 
